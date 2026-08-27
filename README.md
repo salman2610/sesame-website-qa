@@ -2,9 +2,9 @@
 
 # 🔍 Website QA Skill
 
-**A read-only Claude skill that audits websites — it never edits them.**
+**A read-only agent skill that audits websites — it never edits them.**
 
-[![Type](https://img.shields.io/badge/type-Claude%20Skill-6E56CF)]()
+[![Type](https://img.shields.io/badge/type-Agent%20Skill-6E56CF)]()
 [![Mode](https://img.shields.io/badge/mode-read--only-2EA043)]()
 [![Checklists](https://img.shields.io/badge/checklists-5-blue)]()
 [![License](https://img.shields.io/badge/license-Proprietary-lightgrey)]()
@@ -93,7 +93,7 @@ Every run produces two files in `/mnt/user-data/outputs/`:
 
 ## 🚀 Usage
 
-Trigger it by asking Claude to QA test, audit, review, or run the checklist against a site:
+Trigger it by asking your Antigravity agent to QA test, audit, review, or run the checklist against a site:
 
 ```
 Run the QA checklist against https://example.com
