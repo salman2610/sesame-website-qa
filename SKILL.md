@@ -1,17 +1,16 @@
 ---
-
 name: sesame-website-qa
 description: >-
-Runs Sesame Technologies Pvt. Ltd.'s standard QA test suite against a live
-website or web application. Covers applicable cybersecurity, Laravel/MySQL
-security, Laravel/MySQL SEO, general front-end/back-end QA, functionality,
-performance, mobile responsiveness, design, accessibility, and SEO checks.
-Use this skill whenever the user asks to QA test, run the checklist, audit,
-test, review, or validate a website, site, or web application, or references
-any Sesame QA checklist. The skill is read-only: it inspects and reports
-findings and never modifies the target. Every run produces an
-Issue_Log_No_<x>.txt and a Passed_Tests.txt for human review.
--------------------------------------------------------------
+  Runs Sesame Technologies Pvt. Ltd.'s standard QA test suite against a live
+  website or web application. Covers applicable cybersecurity, Laravel/MySQL
+  security, Laravel/MySQL SEO, general front-end/back-end QA, functionality,
+  performance, mobile responsiveness, design, accessibility, and SEO checks.
+  Use this skill whenever the user asks to QA test, run the checklist, audit,
+  test, review, or validate a website, site, or web application, or references
+  any Sesame QA checklist. The skill is read-only: it inspects and reports
+  findings and never modifies the target. Every run produces an
+  Issue_Log_No_<x>.txt and a Passed_Tests.txt for human review.
+---
 
 # Sesame Website QA Test Skill
 
