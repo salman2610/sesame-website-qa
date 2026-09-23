@@ -2,14 +2,13 @@
 name: sesame-website-qa
 description: >-
   Runs Sesame Technologies Pvt. Ltd.'s standard QA test suite against a live
-  website or web application. Covers applicable cybersecurity, Laravel/MySQL
-  security, Laravel/MySQL SEO, general front-end/back-end QA, functionality,
-  performance, mobile responsiveness, design, accessibility, and SEO checks.
-  Use this skill whenever the user asks to QA test, run the checklist, audit,
-  test, review, or validate a website, site, or web application, or references
-  any Sesame QA checklist. The skill is read-only: it inspects and reports
-  findings and never modifies the target. Every run produces an
-  Issue_Log_No_<x>.txt and a Passed_Tests.txt for human review.
+  website or web application. This is a read-only QA skill. Testing MUST be
+  performed in this exact order: Design & UI, Coding & Application Quality,
+  Hosting & Deployment, then Security & Privacy. Security testing MUST always
+  be the final testing phase. The final deliverable is a professionally
+  formatted PDF whose filename contains the target name, date, time, and
+  result status. Use this skill whenever the user asks to QA test, audit,
+  review, validate, or run the Sesame website QA checklist.
 ---
 
 # Sesame Website QA Test Skill
@@ -47,6 +46,214 @@ The checklist is a master QA checklist. **Not every item applies to every
 project.**
 
 The agent must determine applicability before testing.
+
+
+---
+
+# MANDATORY QA TESTING ORDER
+
+The agent MUST execute and report the substantive QA testing in exactly this
+order:
+
+## 1. DESIGN & UI
+
+This is the FIRST testing category.
+
+Complete all applicable checks relating to:
+
+* Design.
+* UI/UX.
+* Visual consistency.
+* Accessibility.
+* Usability.
+* Responsive/mobile presentation.
+* Typography.
+* Layout.
+* Navigation presentation.
+* Forms and visual interaction.
+* Images, icons, spacing, alignment, and page consistency.
+
+Do not begin the Security & Privacy phase before this category is complete.
+
+## 2. CODING & APPLICATION QUALITY
+
+This is the SECOND testing category.
+
+After Design & UI testing is complete, test:
+
+* Application functionality.
+* Navigation behavior.
+* Forms and validation.
+* Buttons and links.
+* Front-end behavior.
+* Back-end/application behavior.
+* Authentication-related application workflows where applicable.
+* Database-backed functionality where safely verifiable.
+* Browser compatibility.
+* Performance and application behavior.
+
+Do not begin the Security & Privacy phase before this category is complete.
+
+## 3. HOSTING & DEPLOYMENT
+
+This is the THIRD testing category.
+
+After Coding & Application Quality testing is complete, test:
+
+* Hosting/runtime behavior.
+* Deployment behavior.
+* HTTP/HTTPS behavior.
+* Runtime response behavior.
+* Server/deployment configuration that can actually be verified.
+* Publicly accessible deployment resources.
+* Runtime headers and related deployment behavior.
+* Availability and deployment-related checks within the permitted scope.
+
+Do not infer runtime behavior from source code alone.
+
+Do not begin the Security & Privacy phase before this category is complete.
+
+## 4. SECURITY & PRIVACY — ALWAYS LAST
+
+This is the FOURTH and FINAL testing category.
+
+Security testing MUST NOT begin until Design & UI, Coding & Application
+Quality, and Hosting & Deployment testing have been completed.
+
+Security checks include, where applicable:
+
+* Authentication.
+* Authorization.
+* Session security.
+* Input validation security.
+* Injection testing.
+* File-upload security.
+* Sensitive-data exposure.
+* Security headers.
+* TLS/SSL.
+* Dependency vulnerabilities.
+* Rate limiting.
+* Security configuration.
+* Publicly exposed sensitive resources.
+* Other applicable cybersecurity controls.
+
+Security findings require concrete evidence and demonstrated security impact.
+A checklist deviation is NOT automatically a security vulnerability.
+
+If a reference checklist contains a security item earlier in its own numbering,
+the agent MUST defer that security item until this final Security & Privacy
+phase.
+
+The final report MUST use this same order:
+
+**Design & UI → Coding & Application Quality → Hosting & Deployment →
+Security & Privacy**
+
+Security MUST be the last testing category.
+
+---
+
+# MANDATORY PDF OUTPUT
+
+The final QA deliverable MUST be a PDF.
+
+Do NOT produce the final QA report as:
+
+* `.txt`
+* `<target>-QA-YYYY-MM-DD-HH-MM-SS-<STATUS>.pdf`
+* `the PDF report`
+
+unless the user explicitly requests a text export.
+
+## PDF filename
+
+The filename MUST contain:
+
+1. Target/project name.
+2. Actual report date.
+3. Actual report time.
+4. Final result status.
+
+Use:
+
+`<target>-QA-YYYY-MM-DD-HH-MM-SS-<STATUS>.pdf`
+
+Examples:
+
+`GTEC-Education-QA-2026-09-23-17-42-31-PASSED.pdf`
+
+`GTEC-Education-QA-2026-09-23-17-42-31-ISSUES-FOUND.pdf`
+
+`sesametechnologies-net-QA-2026-09-23-18-05-12-REVIEW-REQUIRED.pdf`
+
+Allowed status values:
+
+* `PASSED`
+* `ISSUES-FOUND`
+* `REVIEW-REQUIRED`
+
+Use the actual date and time available at report-generation time. Never invent
+the timestamp.
+
+## PDF report structure
+
+The PDF MUST contain sections in this exact order:
+
+1. Executive Summary
+2. Design & UI
+3. Coding & Application Quality
+4. Hosting & Deployment
+5. Security & Privacy
+6. Final Summary
+7. Evidence / Recommendations
+
+Security MUST appear after all other testing categories.
+
+## PDF report contents
+
+Include, where applicable:
+
+* Target/domain.
+* Project ID.
+* Report date and time.
+* Testing scope.
+* Technology stack.
+* Authentication/access limitations.
+* Applicable checklists.
+* Design & UI results.
+* Coding & Application Quality results.
+* Hosting & Deployment results.
+* Security & Privacy results.
+* Confirmed issues.
+* Security hardening observations.
+* Review-required items.
+* Passed checks.
+* N/A checks and reasons.
+* Evidence.
+* Severity.
+* Confidence.
+* Recommendations.
+* Final counts.
+
+## Final status
+
+Use `PASSED` when:
+
+* No confirmed defects exist.
+* No confirmed security findings exist.
+* The available evidence is sufficient for a reliable conclusion.
+
+Use `ISSUES-FOUND` when one or more confirmed defects or confirmed security
+findings exist.
+
+Use `REVIEW-REQUIRED` when no confirmed issue has been established but material
+verification limitations or unresolved conditions prevent a reliable
+conclusion.
+
+Do not determine the status solely from the number of failed checklist items.
+
+---
+
 
 ---
 
@@ -241,7 +448,7 @@ satisfied.
 
 The requirement was tested and a problem was observed.
 
-A failed item must be recorded in `Issue_Log_No_<x>.txt`.
+A failed item must be recorded in `<target>-QA-YYYY-MM-DD-HH-MM-SS-<STATUS>.pdf`.
 
 ## N/A
 
@@ -454,31 +661,25 @@ Do not modify the target while determining scope.
 
 ---
 
-# 12. RUN NUMBER
+# 12. REPORT GENERATION
 
-Before generating output files, inspect:
+The final deliverable is a PDF report.
 
-`/mnt/user-data/outputs/`
+Before generating the PDF:
 
-Look for existing files matching:
+1. Determine the target/project name.
+2. Determine the actual current date and time.
+3. Determine the final status: `PASSED`, `ISSUES-FOUND`, or
+   `REVIEW-REQUIRED`.
+4. Generate the PDF using the required filename format.
+5. Do not overwrite a previous report with the same filename.
+6. Keep historical reports intact.
 
-`Issue_Log_No_*.txt`
+Filename:
 
-Determine the next integer run number.
+`<target>-QA-YYYY-MM-DD-HH-MM-SS-<STATUS>.pdf`
 
-Examples:
-
-No previous issue logs:
-
-`Issue_Log_No_1.txt`
-
-If logs 1 and 2 exist:
-
-`Issue_Log_No_3.txt`
-
-Do not overwrite historical issue logs.
-
-`Passed_Tests.txt` is regenerated for the current run.
+The report must represent the current QA run only.
 
 ---
 
@@ -493,6 +694,7 @@ Identify:
 * Technology stack.
 * Authentication/access.
 * Applicable checklist categories.
+* Testing limitations.
 
 ## Step 2 — Determine applicability
 
@@ -505,44 +707,112 @@ Do not automatically execute irrelevant checks.
 
 Load only relevant checklist files.
 
-## Step 4 — Test each applicable item
+Preserve their item numbers and wording when reporting results.
 
-For every applicable checklist item:
+## Step 4 — Execute testing in mandatory order
+
+The testing order is non-negotiable:
+
+### Phase 1 — Design & UI
+
+Complete all applicable design, UI, accessibility, usability, and responsive
+checks.
+
+### Phase 2 — Coding & Application Quality
+
+Only after Phase 1 is complete, test application functionality, forms,
+navigation, validation, application behavior, backend/application workflows,
+browser compatibility, and performance.
+
+### Phase 3 — Hosting & Deployment
+
+Only after Phase 2 is complete, test hosting, deployment, HTTP/HTTPS, runtime,
+and deployment-related behavior that can actually be verified.
+
+### Phase 4 — Security & Privacy
+
+Only after Phases 1–3 are complete, perform security testing.
+
+Security is ALWAYS the final testing phase.
+
+If security checks are encountered while reading another reference checklist,
+record them for later and execute them only during Phase 4.
+
+## Step 5 — Test each applicable item
+
+For every applicable item:
 
 1. Perform the appropriate read-only test.
-2. Record the observed result.
-3. Determine Pass, Fail, or N/A.
-4. Record evidence for failures.
-5. Assign severity and confidence to failures.
-6. Do not modify the target.
+2. Record what was directly observed.
+3. Distinguish defect, hardening observation, and unverified condition.
+4. Determine PASS, FAIL, or N/A.
+5. Record concrete evidence.
+6. Assign severity and confidence to confirmed failures.
+7. Do not modify the target.
 
-## Step 5 — Verify failures
+## Step 6 — Verify failures
 
 Where practical, re-check failed items to reduce false positives.
 
 Do not perform destructive exploitation merely to prove a finding.
 
-## Step 6 — Generate artifacts
+## Step 7 — Deduplicate findings
 
-Create:
+Before generating the report:
 
-* `Issue_Log_No_<x>.txt`
-* `Passed_Tests.txt`
+1. Group observations by underlying root cause.
+2. Merge duplicate findings.
+3. Preserve all affected checklist item numbers.
+4. Report one issue per root cause unless separate impacts genuinely require
+   separate findings.
+5. Do not inflate the issue count because the same problem appears in multiple
+   checklist categories.
 
-in:
+## Step 8 — Generate the PDF
 
-`/mnt/user-data/outputs/`
+Generate the final PDF using:
 
-## Step 7 — Summarize
+`<target>-QA-YYYY-MM-DD-HH-MM-SS-<STATUS>.pdf`
 
-Provide a concise summary containing:
+The PDF MUST follow:
 
+Design & UI
+→ Coding & Application Quality
+→ Hosting & Deployment
+→ Security & Privacy
+→ Final Summary
+→ Evidence / Recommendations
+
+## Step 9 — Final accuracy review
+
+Before writing the PDF:
+
+* Remove duplicate findings.
+* Remove findings based only on assumptions.
+* Separate confirmed vulnerabilities from hardening observations.
+* Separate review-required conditions from confirmed issues.
+* Confirm each security severity is supported by demonstrated impact.
+* Confirm source-only observations are not presented as runtime facts.
+* Confirm suspicious files/endpoints were checked for actual exposure where
+  authorized.
+* Confirm the issue count represents unique root causes.
+* Confirm the report filename contains the correct target, date, time, and
+  status.
+* Confirm security is the final testing category.
+
+## Step 10 — Summarize
+
+Provide a concise chat summary containing:
+
+* Target.
+* Final status.
 * Total items tested.
 * Pass count.
-* Fail count.
+* Confirmed issue count.
+* Security hardening observation count.
+* Review-required count.
 * N/A count.
-* Counts by checklist.
-* Locations of the two generated files.
+* PDF filename/path.
 
 Do not restate every checklist item in chat.
 
@@ -918,104 +1188,119 @@ Examples:
 
 ---
 
-# 28. ISSUE LOG OUTPUT
+# 28. PDF REPORT OUTPUT
 
-Create:
+The PDF is the authoritative final QA artifact.
 
-`/mnt/user-data/outputs/Issue_Log_No_<x>.txt`
+Do not create separate TXT issue-log or passed-test files unless explicitly
+requested by the user.
 
-Format:
-
-```text
-SESAME TECHNOLOGIES — QA ISSUE LOG
-Issue Log No: <x>
-Domain / Target: <domain or URL>
-Project ID: <project id or "N/A">
-Date: <YYYY-MM-DD>
-Checklists run: <comma-separated checklist names>
-Tested by: AI QA Agent (read-only — no code/config/data was modified)
+The PDF must contain:
 
 ----------------------------------------
-ISSUE #1
-Checklist: <CYBER | LARAVEL-SEC | LARAVEL-SEO | GENERAL-QA | DESIGN>
-Item #: <item number>
-Item: <checklist item text>
-Severity: <Critical | High | Medium | Low>
-Confidence: <High | Medium | Low>
-Observed: <what was actually found>
-Evidence: <URL, HTTP status, header, path, screenshot description, etc.>
-Recommendation: <general remediation recommendation — do not implement it>
-----------------------------------------
-ISSUE #2
-...
-
-----------------------------------------
-SUMMARY
-Total items tested: <n>
-Passed: <n>
-Failed (this log): <n>
-N/A: <n>
-```
-
-If there are zero failures, still create the file.
-
-Use:
-
-```text
-----------------------------------------
-NO ISSUES FOUND
+EXECUTIVE SUMMARY
 ----------------------------------------
 
-SUMMARY
-Total items tested: <n>
-Passed: <n>
-Failed (this log): 0
-N/A: <n>
-```
-
----
-
-# 29. PASSED TESTS OUTPUT
-
-Create/regenerate:
-
-`/mnt/user-data/outputs/Passed_Tests.txt`
-
-This file represents the current run only.
-
-Format:
-
-```text
-SESAME TECHNOLOGIES — QA PASSED TESTS
-Domain / Target: <domain or URL>
-Project ID: <project id or "N/A">
-Date: <YYYY-MM-DD>
-Checklists run: <comma-separated checklist names>
-Corresponds to Issue Log No: <x>
-
-Checklist: CYBER
-[PASS] #1 — <exact checklist item>
-[PASS] #2 — <exact checklist item>
-
-Checklist: GENERAL-QA
-[PASS] #8 — <exact checklist item>
-
-Checklist: DESIGN
-[PASS] #12 — <exact checklist item>
+Target:
+Project ID:
+Report Date:
+Report Time:
+Final Status:
+Technology:
+Testing Scope:
+Testing Limitations:
 
 ----------------------------------------
-N/A ITEMS
+1. DESIGN & UI
 ----------------------------------------
-[N/A] #<number> — <item> — <one-line reason>
+
+Tests:
+Passed:
+Confirmed Issues:
+Review Required:
+N/A:
+
+Details:
+<findings, evidence, observations>
 
 ----------------------------------------
-SUMMARY
-Total passed: <n> / <n tested>
-```
+2. CODING & APPLICATION QUALITY
+----------------------------------------
 
-N/A items must not be counted as Passed or Failed.
+Tests:
+Passed:
+Confirmed Issues:
+Review Required:
+N/A:
 
----
+Details:
+<findings, evidence, observations>
+
+----------------------------------------
+3. HOSTING & DEPLOYMENT
+----------------------------------------
+
+Tests:
+Passed:
+Confirmed Issues:
+Review Required:
+N/A:
+
+Details:
+<findings, evidence, observations>
+
+----------------------------------------
+4. SECURITY & PRIVACY
+----------------------------------------
+
+Security MUST be the final testing category.
+
+Confirmed Security Findings:
+<only evidence-supported security findings>
+
+Security Hardening Observations:
+<best-practice observations without demonstrated vulnerability>
+
+Review Required:
+<potential security conditions requiring further verification>
+
+----------------------------------------
+FINAL SUMMARY
+----------------------------------------
+
+Total checklist items tested:
+Passed:
+Confirmed issues:
+Security hardening observations:
+Review required:
+N/A:
+
+----------------------------------------
+EVIDENCE / RECOMMENDATIONS
+----------------------------------------
+
+For every confirmed issue include:
+
+Issue:
+Checklist:
+Affected item(s):
+Type:
+Severity:
+Confidence:
+Observed:
+Evidence:
+Impact:
+Recommendation:
+
+Never include actual credentials, API keys, tokens, passwords, or secret values.
+
+## Zero-issue report
+
+If there are no confirmed issues, explicitly state:
+
+`NO CONFIRMED ISSUES FOUND`
+
+Do not manufacture findings to populate the report.
 
 # 30. OUTPUT ACCURACY RULES
 
@@ -1029,40 +1314,48 @@ Before creating the final output files:
 * Confirm no N/A item was counted as Pass or Fail.
 * Confirm no credentials or secrets appear in the output.
 * Confirm the target was not modified.
-* Confirm the issue log number is correct.
-* Confirm historical issue logs were not overwritten.
-* Confirm `Passed_Tests.txt` represents only the current run.
+* Confirm the PDF filename contains the correct target, date, time, and status.
+* Confirm the PDF represents only the current run.
+* Confirm the PDF is readable and professionally structured.
+* Confirm the testing sections appear in the mandatory order.
+* Confirm Security & Privacy is the final testing category.
 
 ---
 
 # 31. FINAL CHAT SUMMARY
 
-After generating the files, provide a concise summary:
+After generating the PDF, provide a concise summary:
 
 QA run completed.
 
 Target: <domain>
 Project ID: <project id>
-Issue Log: No. <x>
+Final Status: <PASSED | ISSUES-FOUND | REVIEW-REQUIRED>
 
 Results:
 
-* <Checklist>: <Pass> passed, <Fail> failed, <N/A> N/A
-* <Checklist>: <Pass> passed, <Fail> failed, <N/A> N/A
+* Design & UI: <n> passed, <n> confirmed issues, <n> review required, <n> N/A
+* Coding & Application Quality: <n> passed, <n> confirmed issues, <n> review
+  required, <n> N/A
+* Hosting & Deployment: <n> passed, <n> confirmed issues, <n> review required,
+  <n> N/A
+* Security & Privacy: <n> passed, <n> confirmed security issues, <n> review
+  required, <n> N/A
 
 Total:
 
 * Passed: <n>
-* Failed: <n>
+* Confirmed issues: <n>
+* Security hardening observations: <n>
+* Review required: <n>
 * N/A: <n>
 
-Artifacts:
+PDF:
 
-* Issue_Log_No_<x>.txt
-* Passed_Tests.txt
+`<target>-QA-YYYY-MM-DD-HH-MM-SS-<STATUS>.pdf`
 
-Testing was read-only; no code, configuration, database, or infrastructure
-was modified.
+Testing was read-only; no code, configuration, database, or infrastructure was
+modified.
 
 Do not restate every checklist item in chat.
 
@@ -1075,7 +1368,36 @@ The goal is **accurate QA reporting, not maximum issue count**.
 A smaller number of well-supported findings is preferable to a large number of
 false positives.
 
-The agent must:
+The agent must distinguish between:
 
-**Determine applicability → test what applies → verify what it can →
-record evidence → report accurately → leave the target unchanged.**
+**Confirmed vulnerability / defect**
+→ evidence and impact are established.
+
+**Security hardening observation**
+→ a best-practice control is absent, but no concrete vulnerability has been
+demonstrated.
+
+**Review required**
+→ a potentially relevant condition was observed, but runtime evidence or
+impact verification is still required.
+
+The agent must never convert a checklist deviation directly into a security
+vulnerability.
+
+The agent must follow this exact workflow:
+
+**Determine applicability
+→ Design & UI
+→ Coding & Application Quality
+→ Hosting & Deployment
+→ Security & Privacy
+→ verify runtime behavior where relevant
+→ deduplicate root causes
+→ classify accurately
+→ record evidence
+→ generate the PDF
+→ leave the target unchanged.**
+
+Security is always last.
+
+Accuracy is more important than the number of findings.
